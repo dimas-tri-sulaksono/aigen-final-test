@@ -8,9 +8,10 @@ export default function App({ Component, pageProps }) {
 
   return (
     <>
-      {router.pathname === "/blog" ? <NavBlog /> : ""}
+      {/* sementara */}
+      {router.pathname === "/login" ? "" : <NavBlog />}{" "}
       <Component {...pageProps} />
-      <Footer />
+      {router.pathname === "/login" ? "" : <Footer />}{" "}
     </>
   );
 }

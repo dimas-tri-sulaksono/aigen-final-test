@@ -43,6 +43,12 @@ body {
   background-color: #08a08180;
 }
 
+.text-green-primary, .text-green-seakun {
+  --tw-text-opacity: 1;
+  color: #08a081;
+  color: rgba(8, 160, 129, var(--tw-text-opacity, 1));
+}
+
 .footer {
   background-color: #2d2d2d;
 }
