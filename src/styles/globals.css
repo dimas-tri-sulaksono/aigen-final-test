@@ -7,15 +7,42 @@
   --foreground: #171717;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+body {
+  font-family: "Nunito Sans", serif;
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+.text-primary {
+  --tw-text-opacity: 1;
+  color: rgb(8 160 129 / var(--tw-text-opacity, 1));
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 640px;
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+  width: 100%;
+}
+
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
+.px-1 {
+  padding-left: 0.25rem;
+  padding-right: 0.25rem;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none; /* Untuk Firefox */
+}
+
+.bg-primary\/50 {
+  background-color: #08a08180;
+}
+
+.footer {
+  background-color: #2d2d2d;
 }
