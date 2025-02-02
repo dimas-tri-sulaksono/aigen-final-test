@@ -9,9 +9,17 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       {/* sementara */}
-      {router.pathname === "/login" ? "" : <NavBlog />}{" "}
+      {router.pathname === "/login" || router.pathname === "/register" ? (
+        ""
+      ) : (
+        <NavBlog />
+      )}{" "}
       <Component {...pageProps} />
-      {router.pathname === "/login" ? "" : <Footer />}{" "}
+      {router.pathname === "/login" || router.pathname === "/register" ? (
+        ""
+      ) : (
+        <Footer />
+      )}{" "}
     </>
   );
 }

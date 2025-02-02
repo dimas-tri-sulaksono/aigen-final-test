@@ -43,7 +43,8 @@ body {
   background-color: #08a08180;
 }
 
-.text-green-primary, .text-green-seakun {
+.text-green-primary,
+.text-green-seakun {
   --tw-text-opacity: 1;
   color: #08a081;
   color: rgba(8, 160, 129, var(--tw-text-opacity, 1));
@@ -51,4 +52,121 @@ body {
 
 .footer {
   background-color: #2d2d2d;
+}
+
+/* 1  */
+
+.text-title {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 600;
+}
+
+.text-main {
+  --tw-text-opacity: 1;
+  color: #2d2d2d;
+  color: rgba(45, 45, 45, var(--tw-text-opacity, 1));
+}
+
+.icon-left,
+.icon-right {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+}
+
+.icon-left {
+  left: 16px !important;
+}
+
+.text-\[\#A0A3BD\] {
+  --tw-text-opacity: 1;
+  color: #a0a3bd;
+  color: rgba(160, 163, 189, var(--tw-text-opacity, 1));
+}
+
+/* tipe produk */
+
+.space-x-3 > :not([hidden]) ~ :not([hidden]) {
+  --tw-space-x-reverse: 0;
+  margin-left: 0.75rem;
+  margin-left: calc(0.75rem * (1 - var(--tw-space-x-reverse)));
+  margin-right: 0;
+  margin-right: calc(0.75rem * var(--tw-space-x-reverse));
+}
+
+.provider-card[data-v-92bb37b6] {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.06);
+}
+.provider-card {
+  box-shadow: 0 0 16px rgba(0, 0, 0, 0.04);
+}
+
+/* cloud */
+
+.cloud[data-v-92bb37b6]:before {
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: 50%;
+  position: absolute;
+  top: -8px;
+  transform: translateX(-50%);
+  width: 14px;
+  z-index: 15;
+}
+
+.cloud[data-v-92bb37b6],
+.cloud[data-v-92bb37b6]:before {
+  background-color: #f5f5f5 !important;
+}
+
+.cloud:before {
+  border-radius: 50%;
+  content: "";
+  height: 14px;
+  left: 50%;
+  position: absolute;
+  top: -8px;
+  transform: translateX(-50%);
+  width: 14px;
+  z-index: 15;
+}
+
+.cloud,
+.cloud:before {
+  background-color: #f5f5f5 !important;
+}
+
+.cloud[data-v-92bb37b6],
+.cloud[data-v-92bb37b6]:before {
+  background-color: #f5f5f5 !important;
+}
+
+.cloud[data-v-92bb37b6] {
+  border-radius: 10px;
+  height: 10.5px;
+  position: relative;
+  width: 38px;
+  z-index: 10;
+}
+
+.cloud,
+.cloud:before {
+  background-color: #f5f5f5 !important;
+}
+
+.cloud {
+  border-radius: 10px;
+  height: 10.5px;
+  position: relative;
+  width: 38px;
+  z-index: 10;
+}
+
+.btn-primary {
+  background-color: #08a081;
+  border-color: #08a081 !important;
+  color: #fff;
 }
