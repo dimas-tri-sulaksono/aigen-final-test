@@ -7,7 +7,7 @@ const Products = () => {
   return (
     <>
       <div className="container relative z-20 pb-8 pt-8 md:pb-10 md:pt-10 lg:pb-16 lg:pt-16 xl:pt-20">
-        <div className="mb-8 md:mb-10 lg:mb-[50px] xl:mb-[60px]">
+        <div className="mt-12 mb-8 md:mb-10 lg:mb-[50px] xl:mb-[60px]">
           <div
             id="product-digital"
             className="flex items-center justify-between"
