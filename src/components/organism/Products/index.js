@@ -3,13 +3,14 @@ import React, { useCallback, useEffect, useRef, useState } from "react";
 import CardMarchandise from "@/components/molecules/CardMerchandise";
 import { formatCurrency } from "@/helper/util/formatCurrency";
 import { getProducts } from "@/services/products";
+import useScrollToTop from "@/hooks/useScrollToTop";
 
 const Products = () => {
   const [products, setProducts] = useState([]); // produk yang ditampilin
   const [allProducts, setAllProducts] = useState([]); // semua produk bakal disimpen di sini
   const [loading, setLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(4); // produk yang ditampilin pertama kali
-  const topRef = useRef(null);
+  const { topRef, scrollToTop } = useScrollToTop(); // custom hooks
 
   useEffect(() => {
     const fetchProducts = async () => {
@@ -33,10 +34,6 @@ const Products = () => {
     setVisibleCount(newVisibleCount);
     setProducts(allProducts.slice(0, newVisibleCount)); // update daftar produk yang ditampilin
   }, [visibleCount, allProducts]);
-
-  const scrollToTop = () => {
-    topRef.current?.scrollIntoView({ behavior: "smooth" });
-  };
 
   return (
     <>
