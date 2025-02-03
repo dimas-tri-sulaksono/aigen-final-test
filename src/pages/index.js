@@ -1,5 +1,12 @@
-import Image from "next/image";
+import { useRouter } from "next/router";
+import { useEffect } from "react";
 
 export default function Home() {
-  return <div>HELLO!</div>;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push("/login");
+  }, [router]);
+
+  return <p>Redirecting to login...</p>;
 }
