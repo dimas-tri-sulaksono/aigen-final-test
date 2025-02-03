@@ -3,6 +3,11 @@ import Link from "next/link";
 import React from "react";
 
 const NavMenuBurger = () => {
+  function handleLogout() {
+    localStorage.removeItem("username");
+    localStorage.removeItem("password");
+    window.location.href = "/login";
+  }
   return (
     <>
       <div className="items-center sm:mt-1 md:mt-2 lg:mt-0">
@@ -16,18 +21,18 @@ const NavMenuBurger = () => {
                       height={12}
                     /> */}
             <div>
-              <Link
-                href="/login"
+              <div
+                onClick={handleLogout}
                 class="bg-primary -mt-3 flex h-[35px] w-fit min-w-[75px] items-center justify-center rounded-[8px] text-sm font-bold text-white lg:text-base"
               >
-                Login
-              </Link>
-              <Link
-                href="/login"
+                Logout
+              </div>
+              <div
+                onClick={handleLogout}
                 class="border-primary bg-primary hidden h-[42px] w-[112px] items-center justify-center rounded-[8px] border text-sm font-semibold text-white lg:ml-10 lg:flex lg:text-base"
               >
-                Login
-              </Link>
+                Logout
+              </div>
             </div>
           </div>
         </button>
