@@ -4,13 +4,19 @@ import CardMarchandise from "@/components/molecules/CardMerchandise";
 import { formatCurrency } from "@/helper/util/formatCurrency";
 import { getProducts } from "@/services/products";
 import useScrollToTop from "@/hooks/useScrollToTop";
+import { useRouter } from "next/router";
+import useSessionCheck from "@/hooks/useSessionCheck";
 
 const Products = () => {
   const [products, setProducts] = useState([]); // produk yang ditampilin
   const [allProducts, setAllProducts] = useState([]); // semua produk bakal disimpen di sini
   const [loading, setLoading] = useState(true);
+  // const [isLoading, setIsLoading] = useState(true);
   const [visibleCount, setVisibleCount] = useState(4); // produk yang ditampilin pertama kali
   const { topRef, scrollToTop } = useScrollToTop(); // custom hooks
+  const router = useRouter();
+
+  const isLoading = useSessionCheck();
 
   useEffect(() => {
     const fetchProducts = async () => {
