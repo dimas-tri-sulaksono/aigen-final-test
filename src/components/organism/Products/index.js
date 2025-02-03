@@ -1,23 +1,22 @@
 import FilterProducts from "@/components/molecules/FilterProducts";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import CardMarchandise from "@/components/molecules/CardMerchandise";
 import { formatCurrency } from "@/helper/util/formatCurrency";
+import { getProducts } from "@/services/products";
 
 const Products = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([]); // produk yang ditampilin
+  const [allProducts, setAllProducts] = useState([]); // semua produk bakal disimpen di sini
   const [loading, setLoading] = useState(true);
-
-  // back to top
+  const [visibleCount, setVisibleCount] = useState(4); // produk yang ditampilin pertama kali
   const topRef = useRef(null);
 
-  // get products from API
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        // const response = await getProducts();
-        const response = await fetch("https://fakestoreapi.com/products");
-        const data = await response.json();
-        setProducts(data);
+        const data = await getProducts();
+        setAllProducts(data); // nyimpen semua data di state
+        setProducts(data.slice(0, 4));
         setLoading(false);
       } catch (error) {
         console.error("Error fetching products:", error);
@@ -28,7 +27,13 @@ const Products = () => {
     fetchProducts();
   }, []);
 
-  // back to top lagi
+  // fungsi buat nampilin lebih banyak produk
+  const showMoreProducts = useCallback(() => {
+    const newVisibleCount = visibleCount + 4; // nampilin 4 produk lain setiap tombol diklik
+    setVisibleCount(newVisibleCount);
+    setProducts(allProducts.slice(0, newVisibleCount)); // update daftar produk yang ditampilin
+  }, [visibleCount, allProducts]);
+
   const scrollToTop = () => {
     topRef.current?.scrollIntoView({ behavior: "smooth" });
   };
@@ -68,7 +73,18 @@ const Products = () => {
                 </div>
               </div>
             </div>
+            {/* tombol show more */}
+            {visibleCount < allProducts.length && (
+              <button
+                onClick={showMoreProducts}
+                className="mx-auto mb-10 block rounded-[8px] border-2 border-[#08A081] bg-white pb-[12px] pl-[16px] pr-[16px] pt-[12px] text-[12px] font-bold text-[#08A081] lg:text-base"
+              >
+                Show More
+              </button>
+            )}
           </div>
+
+          {/* tombol scroll to top */}
           <button
             onClick={scrollToTop}
             className="bg-primary fixed bottom-5 right-5 z-50 cursor-pointer rounded-md px-3 py-2 text-sm text-white"

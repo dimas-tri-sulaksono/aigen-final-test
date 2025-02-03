@@ -1,5 +1,5 @@
 import DetailMarchandise from "@/components/molecules/DetailMerchandise";
-import React from "react";
+import React, { useState } from "react";
 
 export async function getServerSideProps(context) {
   const { id } = context.params;
@@ -13,15 +13,11 @@ export async function getServerSideProps(context) {
 
 const ProductDetail = ({ product }) => {
   return (
-    // <div>
-    //   <h1>{product.title}</h1>
-    //   <img src={product.image} alt={product.title} style={{ width: "200px" }} />
-    //   <p>{product.description}</p>
-    //   <p>Price: ${product.price}</p>
-    //   <a href="/products">Back to Products</a>
-    // </div>
-
-    <DetailMarchandise title={product.title} image={product.image} price={product.price} />
+    <DetailMarchandise
+      title={product.title}
+      image={product.image}
+      price={product.price}
+    />
   );
 };
 
