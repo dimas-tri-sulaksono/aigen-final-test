@@ -4,6 +4,8 @@ import NavBlog from "@/components/organism/NavBlog";
 import "@/styles/globals.css";
 import { useRouter } from "next/router";
 import { useMemo } from "react";
+import { Provider } from "react-redux";
+import store from "@/redux/store";
 
 export default function App({ Component, pageProps }) {
   const router = useRouter();
@@ -19,8 +21,9 @@ export default function App({ Component, pageProps }) {
     <>
       {showNav ? showNavBlog ? <NavBlog /> : <Nav /> : null}
 
-      <Component {...pageProps} />
-
+      <Provider store={store}>
+        <Component {...pageProps} />
+      </Provider>
       {showNavBlog && <Footer />}
     </>
   );

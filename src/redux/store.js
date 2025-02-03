@@ -1,10 +1,9 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-import screenSlice from "./screenSlice/screenSlice";
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '@/redux/slice/counterSlice'; // contoh slice
 
 export const store = configureStore({
   reducer: {
-    //  panggil reducer-reducer yang udah dibuat
-    screen: screenSlice,
+    counter: counterReducer, // tambahkan slice yang dibutuhkan
   },
 });
 

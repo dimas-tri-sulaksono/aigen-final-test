@@ -6,6 +6,7 @@ const api = process.env.NEXT_PUBLIC_API;
 export const login = async (payload) => {
   try {
     const response = await axios.post(`${api}/auth/login`, payload);
+    sessionStorage.setItem("isLoggedIn", "true");
 
     return { status: true, token: response.data.token };
   } catch (error) {

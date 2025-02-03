@@ -8,11 +8,11 @@ import Image from "next/image";
 
 const LoginPage = () => {
   const [errorLogin, setErrorLogin] = useState("");
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const router = useRouter();
 
-  //
   async function handleLogin(event) {
-    //
     event.preventDefault();
 
     const payload = {
@@ -48,6 +48,8 @@ const LoginPage = () => {
         name="username"
         placeholder="Masukkan email"
         classNameInput="px-3"
+        onChange={(event) => setUsername(e.target.value)}
+        required
       >
         <div className="icon-left"></div>
       </InputForm>
@@ -60,6 +62,8 @@ const LoginPage = () => {
         name="password"
         placeholder="Masukkan password kamu disini"
         classNameInput="pl-3 pr-10"
+        onChange={(event) => setPassword(e.target.value)}
+        required
       >
         <div className="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer">
           <Image
