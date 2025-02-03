@@ -14,7 +14,7 @@ const InputForm = ({
   return (
     <>
       <label
-        htmlForor={label}
+        htmlFor={label}
         className={`text-gray-secondary !lg:text-base dm-sans block !text-sm ${classNameLabel}`}
       >
         {text}

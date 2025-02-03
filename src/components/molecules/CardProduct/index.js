@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 
-const CardProduct = () => {
+const CardProduct = ({ title, price }) => {
   return (
     <>
       <div>
@@ -32,14 +32,19 @@ const CardProduct = () => {
                     User Reguler
                   </p>
                   <p className="leading-[21px]">
-                    <span className="text-main !font-bold">Rp 36.900</span>
-                    <span className="text-[#66738F] md:hidden">/bln</span>
+                    <span className="text-main !font-bold">
+                      {/* Rp 36.900 */}
+                      {price}
+                    </span>
+                    <span className="hidden text-[#66738F] md:hidden">
+                      /bln
+                    </span>
                     <span className="hidden text-[#66738F] md:inline-block">
                       /bulan
                     </span>
                   </p>
                 </div>
-                <div className="rounded-[20px] bg-[#E9FAF5] px-2 py-[3px] text-[8px] !font-medium leading-[15px] text-[#00BA88] md:px-[14px] md:py-2 md:text-[10px]">
+                <div className="hidden rounded-[20px] bg-[#E9FAF5] px-2 py-[3px] text-[8px] !font-medium leading-[15px] text-[#00BA88] md:px-[14px] md:py-2 md:text-[10px]">
                   1, 3, 6, 12
                   <span className="md:hidden"> Bln</span>
                   <span className="hidden md:inline-block"> Bulan</span>

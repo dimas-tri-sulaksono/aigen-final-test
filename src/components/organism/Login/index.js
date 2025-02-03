@@ -26,7 +26,7 @@ const LoginPage = () => {
 
       if (res.status) {
         localStorage.setItem("token", res.token);
-        router.push("/blog");
+        router.push("/products");
         //
       } else {
         console.log("login error : ", res.error.response.data);
