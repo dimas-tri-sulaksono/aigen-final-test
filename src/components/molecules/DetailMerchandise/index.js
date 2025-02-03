@@ -1,10 +1,25 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  increment,
+  decrement,
+  setPricePerItem,
+} from "@/redux/slice/counterSlice";
+import { formatCurrency } from "@/helper/util/formatCurrency";
 
 const DetailMarchandise = ({ title, image, price }) => {
   const router = useRouter();
+  const count = useSelector((state) => state.counter.value);
+  const totalPrice = useSelector((state) => state.counter.totalPrice);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(setPricePerItem(price));
+  }, [dispatch, price]);
+
   return (
     <>
       <div class="px-[20px] pb-28 pt-20 md:container md:w-full">
@@ -36,6 +51,7 @@ const DetailMarchandise = ({ title, image, price }) => {
             </div>
           </div>
         </div>
+
         <div class="mt-4 block gap-5 lg:flex">
           <div class="block gap-5 md:flex md:w-[752px]">
             <div class="rounded-xl md:w-[350px]">
@@ -89,7 +105,7 @@ const DetailMarchandise = ({ title, image, price }) => {
           </div>
           <div class="mt-3 flex justify-between">
             <div class="text-[16px] font-bold leading-[26px] text-[#08A081] md:text-[24px] md:leading-[40px]">
-              {price}
+              {formatCurrency(price)}
             </div>
             <div class="md:text-[14px]leading-5 text-[12px] font-medium text-[#66738F] md:leading-6">
               Terjual: 8
@@ -137,7 +153,7 @@ const DetailMarchandise = ({ title, image, price }) => {
             <div class="text-[14px] font-medium leading-[23px] md:text-[16px] md:leading-[26px]">
               Pilih Ukuran
             </div>
-            <div class="mt-3 w-full">
+            <div class="mt-3 flex w-full justify-between">
               <div class="flex flex-wrap gap-3">
                 <div class="inline-flex h-[34px] w-10 cursor-pointer items-center justify-center rounded-[6px] border !border-[#08A081] bg-[#E1F7F2] px-2 py-[8.5px] text-center text-[14px] leading-[23px]">
                   S
@@ -150,6 +166,24 @@ const DetailMarchandise = ({ title, image, price }) => {
                 </div>
                 <div class="inline-flex h-[34px] w-10 cursor-pointer items-center justify-center rounded-[6px] border border-[#DCE1E0] px-2 py-[8.5px] text-center text-[14px] leading-[23px]">
                   XL
+                </div>
+              </div>
+              {/* counter */}
+              <div className="counter">
+                <div className="button">
+                  <button
+                    className="h-10 w-10 border"
+                    onClick={() => dispatch(decrement())}
+                  >
+                    -
+                  </button>
+                  <button className="h-10 w-10 border">{count}</button>
+                  <button
+                    className="h-10 w-10 border"
+                    onClick={() => dispatch(increment())}
+                  >
+                    +
+                  </button>
                 </div>
               </div>
             </div>
@@ -264,7 +298,7 @@ const DetailMarchandise = ({ title, image, price }) => {
               Total Tagihan
             </p>
             <p class="text-primary text-sm font-bold !leading-[23.1px] md:mt-1 md:text-[20px]">
-              Rp 130.000
+              {formatCurrency(totalPrice)}
             </p>
           </div>
           <div class="flex items-center gap-2">
